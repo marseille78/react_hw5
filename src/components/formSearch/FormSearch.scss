@@ -1,0 +1,51 @@
+$v_FormSearch: (
+  bd: (solid 1px #dbdbdb),
+  bdrs: 3px,
+  bg: #fafafa,
+  h: 28px,
+  lh: 24px,
+  sprite: "../../img/sprite.png"
+);
+
+@function _FormSearch($var) {
+  @return map_get($v_FormSearch, $var);
+}
+
+@mixin FormSearch() {
+  .form {
+    &__search {
+      border: _FormSearch(bd);
+      background: _FormSearch(bg);
+      background-color: _FormSearch(bg);
+      height: _FormSearch(h);
+      line-height: _FormSearch(lh);
+      padding: 0 7px;
+      -webkit-border-radius: _FormSearch(bdrs);
+      -moz-border-radius: _FormSearch(bdrs);
+      border-radius: _FormSearch(bdrs);
+      position: relative;
+      padding-left: 25px;
+
+      &:before {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 7px;
+        top: 50%;
+        margin-top: -5px;
+        width: 10px;
+        height: 10px;
+        background: url("#{_FormSearch(sprite)}") no-repeat -546px -102px;
+        cursor: pointer;
+      }
+    }
+    &__input {
+      background-color: transparent;
+      width: 100%;
+      border: none;
+      outline: none;
+    }
+  }
+};
+
+@include FormSearch();

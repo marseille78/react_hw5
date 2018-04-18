@@ -1,0 +1,35 @@
+$v_base: (
+  bg: #fafafa,
+  c: #262626,
+  ff: (-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif),
+  fz: 14px,
+  lh: 1.3em,
+  maw: 935px
+);
+
+@function _base($var) {
+  @return map_get($v_base, $var);
+}
+
+@mixin base() {
+  * {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+  }
+
+  body {
+    background-color: _base(bg);
+    color: _base(c);
+    font-family: _base(ff);
+    font-size: _base(fz);
+    line-height: _base(lh);
+  }
+
+  .container {
+    max-width: _base(maw);
+    margin: 0 auto;
+  }
+}
+
+@include base();

@@ -1,0 +1,51 @@
+$v_Header: (
+  bd: 1px solid rgba(0,0,0,.0975),
+  bg: #fff
+);
+
+@function _Header($var) {
+  @return map_get($v_Header, $var);
+}
+
+@mixin Header() {
+  .header {
+    background-color: _Header(bg);
+    border-bottom: _Header(bd);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 77px;
+
+    &__inner {
+      display: flex;
+      flex-direction: row;
+      padding: 22px 40px;
+      height: 77px;
+    }
+
+    &__logo {
+      flex-grow: 1;
+    }
+
+    &__search {
+      width: 215px;
+      min-width: 125px;
+      flex: 0 1 auto;
+    }
+
+    &__login-box {
+      flex-grow: 1;
+    }
+
+    .logo {
+      display: inline-block;
+      vertical-align: middle;
+      background: url("../../img/sprite.png") no-repeat -177px -264px;
+      width: 176px;
+      height: 35px;
+    }
+  }
+}
+
+@include Header();
